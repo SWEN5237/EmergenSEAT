@@ -1,2 +1,0 @@
-# EmergenSEAT
-EmergenSEAT NativeApp
