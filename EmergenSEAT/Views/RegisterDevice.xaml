@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EmergenSEAT.Views.RegisterDevice">
+    <StackLayout>
+        <Label Text="EmergenSEAT Registration" FontSize="24" HorizontalOptions="Center" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Entry Grid.Row="0" HorizontalOptions="Center" Placeholder="Serial Number" />
+            <Entry Grid.Row="1" HorizontalOptions="Center" Placeholder="Car Seat Make" />
+            <Entry Grid.Row="2" HorizontalOptions="Center" Placeholder="Car Seat Model" />
+
+            <Button Grid.Row="4" Text="Register"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EmergenSEAT.Views;
 using Xamarin.Forms;
 
 namespace EmergenSEAT
@@ -13,9 +10,16 @@ namespace EmergenSEAT
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        public Button RegisterBtn { get; set; }
         public MainPage()
         {
             InitializeComponent();
+            
+        }
+        async void RegisterBtn_OnClick(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new RegisterUser());
         }
     }
+
 }

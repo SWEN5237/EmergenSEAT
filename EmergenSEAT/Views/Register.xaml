@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EmergenSEAT.Views.RegisterUser">
+    <StackLayout>
+        <Label Text="EmergenSEAT User Registration" FontSize="24" HorizontalOptions="Center" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Entry Grid.Row="0" HorizontalTextAlignment="Center" Placeholder="Name" />
+            <Entry Grid.Row="1" HorizontalTextAlignment="Center" Placeholder="Email" />
+            <Entry Grid.Row="2" HorizontalTextAlignment="Center" IsPassword="True" Placeholder="Password" />
+            <Entry Grid.Row="3" HorizontalTextAlignment="Center" IsPassword="True" Placeholder="Confirm Password" />
+
+            <Button Grid.Row="4" Grid.Column="4" Text="Register"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
