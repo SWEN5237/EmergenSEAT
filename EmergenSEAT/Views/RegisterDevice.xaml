@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EmergenSEAT.Views.RegisterDevice">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EmergenSEAT.Views.RegisterDevice">
     <StackLayout>
         <Label Text="EmergenSEAT Registration" FontSize="24" HorizontalOptions="Center" />
         <Grid>
@@ -17,7 +19,7 @@
             <Entry Grid.Row="1" HorizontalOptions="Center" Placeholder="Car Seat Make" />
             <Entry Grid.Row="2" HorizontalOptions="Center" Placeholder="Car Seat Model" />
 
-            <Button Grid.Row="4" Text="Register"/>
+            <Button Grid.Row="4" Text="Register" Clicked="RegisterBtn_OnClick"/>
         </Grid>
     </StackLayout>
 </ContentPage>

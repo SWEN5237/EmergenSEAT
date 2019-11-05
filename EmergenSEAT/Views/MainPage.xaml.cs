@@ -20,6 +20,10 @@ namespace EmergenSEAT
         {
             await Navigation.PushAsync(new RegisterUser());
         }
+        async void LoginBtn_OnClick(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new MainUserView());
+        }
     }
 
 }

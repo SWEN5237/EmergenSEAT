@@ -1,5 +1,30 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EmergenSEAT.Views.MainUserView">
-    <ContentPage.Content>
-    </ContentPage.Content>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EmergenSEAT.Views.MainUserView">
+   <StackLayout>
+        <Label Text="EmergenSEAT" FontSize="24" HorizontalOptions="Center" />
+        <Label Text="Welcome Adriana!" FontSize="20" HorizontalOptions="Center" />
+        <BoxView VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="1" WidthRequest="50" Color="Black"/>
+        <Label Text="Car Seats" FontSize="24" HorizontalOptions="Center" />
+        <BoxView VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="1" WidthRequest="50" Color="Black"/>
+        <Grid Padding="15" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Text="Serial Number: 879238798NJ290"/>
+            <Label Grid.Row="1" Text="Make: Graco"/>
+            <Label Grid.Row="2" Text="Model: Extend 2 Fit"/>
+            <Label Grid.Row="3" Text="Temperature: 72 deg F"/>
+            <Label Grid.Row="4" Text="Weight: 27.3 lbs"/>
+        </Grid>
+       <Button Text="Register New Device" Clicked="RegisterBtn_OnClick"/>
+   </StackLayout>
 </ContentPage>
