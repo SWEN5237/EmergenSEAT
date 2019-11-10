@@ -19,7 +19,7 @@ namespace EmergenSEAT.Model
             this.vin = vin;
         }
 
-        public void update_car_details(string make, string model, string year, string vin)
+        public void UpdateCarDetails(string make, string model, string year, string vin)
         {
             this.make = make;
             this.model = model;

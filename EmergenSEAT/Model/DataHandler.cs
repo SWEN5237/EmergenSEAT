@@ -31,10 +31,10 @@ namespace EmergenSEAT.Model
                 foreach (CarSeat seat in s.car_seats)
                 {
                     CarSeat car_seat = new CarSeat(seat.serial_number, seat.model, seat.latitude, seat.longitude, seat.weight, seat.temperature);
-                    car_seat.set_gps_location(seat.latitude, seat.longitude);
-                    car_seat.set_temperature(seat.temperature, seat.temperature_unit);
-                    car_seat.set_weight(seat.weight, seat.weight_unit);
-                    profile.add_car_seat(car_seat);
+                    car_seat.SetGPSLocation(seat.latitude, seat.longitude);
+                    car_seat.SetTemperature(seat.temperature, seat.temperature_unit);
+                    car_seat.SetWeight(seat.weight, seat.weight_unit);
+                    profile.AddCarSeat(car_seat);
                 }
                 profiles.Add(profile);
             }
