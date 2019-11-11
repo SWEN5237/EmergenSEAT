@@ -15,11 +15,11 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Entry x:Uid="firstName" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Placeholder="First Name" />
-            <Entry x:Uid="lastName" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" Placeholder="Last Name" />
-            <Entry x:Uid="password" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" IsPassword="True" Placeholder="Password" />
-            <Entry x:Uid="confirmPassword" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" IsPassword="True" Placeholder="Confirm Password" />
-            <Button x:Uid="register_btn" Grid.Row="5" Grid.Column="0" Text="Register"/>
+            <Entry x:Uid="firstName" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Placeholder="First Name" Text="{Binding FirstName}" />
+            <Entry x:Uid="lastName" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" Placeholder="Last Name" Text="{Binding LastName}"/>
+            <Entry x:Uid="email" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" Placeholder="Email" Text="{Binding Email}"/>
+            <Entry x:Uid="password" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" IsPassword="True" Placeholder="Confirm Password" Text="{Binding Password}" />
+            <Button x:Uid="register_btn" Grid.Row="5" Grid.Column="0" Text="Register" Clicked="RegisterBtn_OnClick"/>
         </Grid>
     </StackLayout>
 </ContentPage>

@@ -16,8 +16,8 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Entry x:Uid="email" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Placeholder="Email" />
-            <Entry x:Uid="password" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" IsPassword="True" Placeholder="Password" />
+            <Entry x:Uid="email" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Placeholder="Email" Text="{Binding Email}"/>
+            <Entry x:Uid="password" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" IsPassword="True" Placeholder="Password" Text="{Binding Password}"/>
             <Button x:Uid="login_btn" Grid.Row="2" Grid.Column="0" Text="Login" Clicked="LoginBtn_OnClick"/>
             <Button x:Uid="register_btn" Grid.Row="3" Grid.Column="0" Text="Register" Clicked="RegisterBtn_OnClick"/>
         </Grid>
