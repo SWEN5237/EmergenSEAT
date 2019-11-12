@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Input;
 using EmergenSEAT.Model;
 using EmergenSEAT.ViewModel;
@@ -28,8 +29,23 @@ namespace EmergenSEAT.Views
             ActiveUser = ViewModel.ActiveUser;
             WelcomeMessage = string.Format("Welcome, {0}", ActiveUser.first_name);
 
+            int numCarSeats = ActiveUser.car_seats.Count;
+            Enumerable.Range(1, numCarSeats).ToList().ForEach((x) => CarSeatGrid.RowDefinitions.Add(new RowDefinition()));
+            int i = 0;
+            ActiveUser.car_seats.ForEach((carSeat)=> {
+                var carSeatData = string.Format("{0}\n{1}\n{2}\n{3}\n{4}\n", carSeat.serial_number, carSeat.model, carSeat.temperature, carSeat.latitude, carSeat.longitude);
+                var label = new Label
+                {
+                    Text = carSeatData,
+                    HorizontalOptions = LayoutOptions.Center
+                };
+                CarSeatGrid.Children.Add(label, 0, i);
+                i++;
+            });
+
             InitializeComponent();
         }
+
 
 
             

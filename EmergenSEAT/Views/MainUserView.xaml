@@ -8,7 +8,10 @@
         <BoxView VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="1" WidthRequest="50" Color="Black"/>
         <Label Text="Car Seats" FontSize="24" HorizontalOptions="Center" />
         <BoxView VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="1" WidthRequest="50" Color="Black"/>
-        <Grid Padding="15" >
+        <Grid Padding="15" x:Name="CarSeatGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
         </Grid>
        <Button Text="Register New Device" Clicked="RegisterBtn_OnClick"/>
        <Button Text="Logout" Clicked="LogoutBtn_OnClick"/>
