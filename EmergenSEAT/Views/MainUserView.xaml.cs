@@ -27,6 +27,7 @@ namespace EmergenSEAT.Views
 
             //Default 
             ActiveUser = ViewModel.ActiveUser;
+<<<<<<< HEAD
             WelcomeMessage = string.Format("Welcome, {0}", ActiveUser.FirstName);
 
             int numCarSeats = ActiveUser.CarSeats.Count;
@@ -34,6 +35,15 @@ namespace EmergenSEAT.Views
             int i = 0;
             ActiveUser.CarSeats.ForEach((carSeat)=> {
                 var carSeatData = string.Format("{0}\n{1}\n{2}\n{3}\n{4}\n", carSeat.SerialNumber, carSeat.Model, carSeat.Temperature, carSeat.Latitude, carSeat.Longitude);
+=======
+            WelcomeMessage = string.Format("Welcome, {0}", ActiveUser.first_name);
+
+            int numCarSeats = ActiveUser.car_seats.Count;
+            Enumerable.Range(1, numCarSeats).ToList().ForEach((x) => CarSeatGrid.RowDefinitions.Add(new RowDefinition()));
+            int i = 0;
+            ActiveUser.car_seats.ForEach((carSeat)=> {
+                var carSeatData = string.Format("{0}\n{1}\n{2}\n{3}\n{4}\n", carSeat.serial_number, carSeat.model, carSeat.temperature, carSeat.latitude, carSeat.longitude);
+>>>>>>> 12f22c31b23a0a9c5a856a1d917addbde302818e
                 var label = new Label
                 {
                     Text = carSeatData,
@@ -46,6 +56,13 @@ namespace EmergenSEAT.Views
             InitializeComponent();
         }
 
+<<<<<<< HEAD
+=======
+
+
+            
+
+>>>>>>> 12f22c31b23a0a9c5a856a1d917addbde302818e
         async void RegisterBtn_OnClick(object sender, EventArgs args)
         {
             await Navigation.PushAsync(new RegisterDevice());

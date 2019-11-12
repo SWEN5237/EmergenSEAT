@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
 using EmergenSEAT.Model;
@@ -9,47 +9,50 @@ namespace EmergenSEAT.ViewModel
     {
         public ICommand LoginCommand { get; set; }
         public UserProfile ActiveUser { get; set; }
+        public List<UserProfile> Profiles { get; set; }
 
         public EmergenSeatViewModel(UserProfile user)
         {
-            ActiveUser = user;
+            Profiles = DataHandler.ImportFromJson(@"UserProfiles.json");
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler Propert yChanged;
 
         public bool Login(string username, string password)
         {
-            //TODO do actual login
-            if(ActiveUser.email.equals(username) && ActiveUser.password.equals(password))
+            
+            if(ActiveUser.Email.Equals(username) && ActiveUser.Passw
+        rd))
                 return true;
             else
                 return false;
         }
         
-        public UserProfile Register(string username, string password)
+        public UserProfile Register(string username, string password, string firstName, string lastName)
         {
-            //TODO register
-            return new UserProfile(username, "", "", password);
-        }
+            ActiveUser = new UserProfile(username, firstName, lastName, password);
+            Profiles.Add(ActiveUser);
+            DataHandler.ExportToJson("", @"UserProfiles.json", Profiles);
+            return Acti
+             }
 
-        public bool AddCarSeat(CarSeat carSeat)
+        public bo
+            (CarSeat carSeat)
         {
-            //TODO add carseat to active user
-            ActiveUser.AddCarSeat(carSeat.serial_number);
+            ActiveUser.AddCarSeat(carSeat);
             return true;
         }
 
-        public bool DeleteCarSeat(CarSeat carSeat)
+        public bool DeleteCarSeat(string serialNumber)
         {  
-            //TODO delete carseat
-            ActiveUser.DeleteCarSeat(carSeat.serial_number);
-            return true;
+            ActiveUser.DeleteCarSeat(serialNumb
+               return true;
         }
 
-        public List<CarSeat> GetCarSeats(CarSeat carSeat)
+        public List<CarSeat> GetCarSeats()
         {
             //TODO Get Carseats
-            return carSeat.car_seats; 
+            return ActiveUser.CarSeats; 
         }
     }
 }
