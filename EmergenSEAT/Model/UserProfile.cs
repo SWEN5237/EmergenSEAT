@@ -1,50 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EmergenSEAT.Model
 {
     public class UserProfile
     {
-        public string email;
-        public string first_name;
-        public string last_name;
-        public string password;
-        public List<CarSeat> car_seats;
+        public string Email { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Password { get; set; }
+        public List<CarSeat> CarSeats { get; set; }
 
-        public UserProfile(string email, string first_name, string last_name, string password)
+        public UserProfile(string email, string firstName, string lastName, string password)
         {
-            this.email = email;
-            this.first_name = first_name;
-            this.last_name = last_name;
-            this.password = password;
-            car_seats = new List<CarSeat>();
+            this.Email = email;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Password = password;
+            CarSeats = new List<CarSeat>();
         }
 
         public void AddCarSeat(CarSeat seat)
         {
-            car_seats.Add(seat);
+            CarSeats.Add(seat);
         }
-        public void DeleteCarSeat(CarSeat seat)
+        public void DeleteCarSeat(string serialNumber)
         {
-            //check of car_seats contains a certain serial
-            foreach (CarSeat seats in car_seats)
-            {
-                if (seats.serial_number.Equals(seat.serial_number))
-                    car_seats.Remove(seat);
-            }
-
         }
 
         public void PrintUserProfile(CarSeat seats)
         {
-            Console.WriteLine("Email: " + email);
-            foreach (CarSeat s in car_seats)
+            Console.WriteLine("Email: " + Email);
+            foreach (CarSeat s in CarSeats)
             {
                 seats.PrintCarSeat();
             }
         }
-
-
     }
 }

@@ -26,7 +26,7 @@ namespace EmergenSEAT.Views
         {
             if (Email != null && Password != null)
             {
-                var newUserProfile = ViewModel.Register(Email, Password);
+                var newUserProfile = ViewModel.Register(Email, Password, FirstName, LastName);
                 if (newUserProfile != null)
                 {
                     await Navigation.PushAsync(new MainUserView());

@@ -27,12 +27,12 @@ namespace EmergenSEAT.Views
 
             //Default 
             ActiveUser = ViewModel.ActiveUser;
-            WelcomeMessage = string.Format("Welcome, {0}", ActiveUser.first_name);
+            WelcomeMessage = string.Format("Welcome, {0}", ActiveUser.FirstName);
 
-            int numCarSeats = ActiveUser.car_seats.Count;
+            int numCarSeats = ActiveUser.CarSeats.Count;
             Enumerable.Range(1, numCarSeats).ToList().ForEach((x) => CarSeatGrid.RowDefinitions.Add(new RowDefinition()));
             int i = 0;
-            ActiveUser.car_seats.ForEach((carSeat)=> {
+            ActiveUser.CarSeats.ForEach((carSeat)=> {
                 var carSeatData = string.Format("{0}\n{1}\n{2}\n{3}\n{4}\n", carSeat.serial_number, carSeat.model, carSeat.temperature, carSeat.latitude, carSeat.longitude);
                 var label = new Label
                 {
@@ -45,10 +45,6 @@ namespace EmergenSEAT.Views
 
             InitializeComponent();
         }
-
-
-
-            
 
         async void RegisterBtn_OnClick(object sender, EventArgs args)
         {
