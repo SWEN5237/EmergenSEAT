@@ -11,18 +11,17 @@ namespace EmergenSEAT.ViewModel
         public UserProfile ActiveUser { get; set; }
         public List<UserProfile> Profiles { get; set; }
 
-        public EmergenSeatViewModel(UserProfile user)
+        public EmergenSeatViewModel()
         {
             Profiles = DataHandler.ImportFromJson(@"UserProfiles.json");
         }
 
-        public event PropertyChangedEventHandler Propert yChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public bool Login(string username, string password)
         {
             
-            if(ActiveUser.Email.Equals(username) && ActiveUser.Passw
-        rd))
+            if(ActiveUser.Email.Equals(username) && ActiveUser.Password.Equals(password))
                 return true;
             else
                 return false;
@@ -33,11 +32,10 @@ namespace EmergenSEAT.ViewModel
             ActiveUser = new UserProfile(username, firstName, lastName, password);
             Profiles.Add(ActiveUser);
             DataHandler.ExportToJson("", @"UserProfiles.json", Profiles);
-            return Acti
-             }
+            return ActiveUser;
+        }
 
-        public bo
-            (CarSeat carSeat)
+        public bool AddCarSeat(CarSeat carSeat)
         {
             ActiveUser.AddCarSeat(carSeat);
             return true;
@@ -45,8 +43,8 @@ namespace EmergenSEAT.ViewModel
 
         public bool DeleteCarSeat(string serialNumber)
         {  
-            ActiveUser.DeleteCarSeat(serialNumb
-               return true;
+            ActiveUser.DeleteCarSeat(serialNumber);
+            return true;
         }
 
         public List<CarSeat> GetCarSeats()
