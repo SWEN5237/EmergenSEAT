@@ -6,51 +6,48 @@ namespace EmergenSEAT.Model
 {
     public class CarSeat
     {
-        public string serial_number;
-        public string model;
-        public string latitude;
-        public string longitude;
-        public double weight = 0;
-        public string weight_unit = "Lbs";
-        public double temperature = 0;
-        public string temperature_unit = "Farenheit";
+        public string SerialNumber { get; set; }
+        public string Make { get; set; }
+        public string Model { get; set; }
+        public string Latitude { get; private set; }
+        public string Longitude { get; private set; }
+        public double Weight { get; private set; } = 0;
+        public string WeightUnit { get; private set; } = "Lbs";
+        public double Temperature { get; private set; } = 0;
+        public string TemperatureUnit { get; private set; } = "Farenheit";
 
-        public CarSeat(string serial_number, string model, string latitude, string longitude, double weight, double temperature)
+        public CarSeat(string serial_number, string make, string model)
         {
             //Vehicle vehicle = new Vehicle();
-            this.serial_number = serial_number;
-            this.model = model;
-            this.latitude = latitude;
-            this.longitude = longitude;
-            this.weight = weight;
-            this.temperature = temperature;
-
+            this.SerialNumber = serial_number;
+            this.Make = make;
+            this.Model = model;
         }
 
         public void SetGPSLocation(string latitude, string longitude)
         {
-            this.latitude = latitude;
-            this.longitude = longitude;
+            this.Latitude = latitude;
+            this.Longitude = longitude;
         }
 
         public void SetWeight(double weight, string unit)
         {
-            this.weight = weight;
-            weight_unit = unit;
+            this.Weight = weight;
+            this.WeightUnit = unit;
         }
 
         public void SetTemperature(double temp, string unit)
         {
-            temperature = temp;
-            temperature_unit = unit;
+            this.Temperature = temp;
+            this.TemperatureUnit = unit;
         }
 
 
         public void PrintCarSeat()
         {
-            Console.WriteLine(serial_number);
-            Console.WriteLine(latitude);
-            Console.WriteLine(longitude);
+            Console.WriteLine(SerialNumber);
+            Console.WriteLine(Latitude);
+            Console.WriteLine(Longitude);
         }
 
 

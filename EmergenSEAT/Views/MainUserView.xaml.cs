@@ -14,7 +14,8 @@ namespace EmergenSEAT.Views
     public partial class MainUserView : ContentPage
     {
         public EmergenSeatViewModel ViewModel { get; set; }
-        public UserProfile ActiveUser { get; set; } 
+        public UserProfile ActiveUser { get; set; }
+        public CarSeat CarSeat { get; set; }
         public string WelcomeMessage { get; set; }
         public ObservableCollection<CarSeat> CarSeats { get; set; }
 
@@ -29,19 +30,7 @@ namespace EmergenSEAT.Views
             ActiveUser = ViewModel.ActiveUser;
             WelcomeMessage = string.Format("Welcome, {0}", ActiveUser.FirstName);
 
-            int numCarSeats = ActiveUser.CarSeats.Count;
-            Enumerable.Range(1, numCarSeats).ToList().ForEach((x) => CarSeatGrid.RowDefinitions.Add(new RowDefinition()));
-            int i = 0;
-            ActiveUser.CarSeats.ForEach((carSeat)=> {
-                var carSeatData = string.Format("{0}\n{1}\n{2}\n{3}\n{4}\n", carSeat.serial_number, carSeat.model, carSeat.temperature, carSeat.latitude, carSeat.longitude);
-                var label = new Label
-                {
-                    Text = carSeatData,
-                    HorizontalOptions = LayoutOptions.Center
-                };
-                CarSeatGrid.Children.Add(label, 0, i);
-                i++;
-            });
+            if(ActiveUser != null && ActiveUser.CarSeats.Count > 0) { CarSeat = ActiveUser.CarSeats[0]; }
 
             InitializeComponent();
         }

@@ -15,9 +15,9 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Entry Grid.Row="0" HorizontalOptions="Center" Placeholder="Serial Number" />
-            <Entry Grid.Row="1" HorizontalOptions="Center" Placeholder="Car Seat Make" />
-            <Entry Grid.Row="2" HorizontalOptions="Center" Placeholder="Car Seat Model" />
+            <Entry Grid.Row="0" HorizontalOptions="Center" Placeholder="Serial Number" Text="{Binding SerialNumber}" />
+            <Entry Grid.Row="1" HorizontalOptions="Center" Placeholder="Car Seat Make" Text="{Binding Make}" />
+            <Entry Grid.Row="2" HorizontalOptions="Center" Placeholder="Car Seat Model" Text="{Binding Model}"/>
 
             <Button Grid.Row="4" Text="Register" Clicked="RegisterBtn_OnClick"/>
         </Grid>

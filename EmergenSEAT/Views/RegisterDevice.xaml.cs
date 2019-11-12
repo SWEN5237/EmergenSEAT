@@ -12,6 +12,7 @@ namespace EmergenSEAT.Views
     {
         public EmergenSeatViewModel ViewModel { get; set; }
         public string SerialNumber { get; set; }
+        public string Make { get; set; }
         public string Model { get; set; }
 
         public RegisterDevice()
@@ -23,11 +24,11 @@ namespace EmergenSEAT.Views
 
         async void RegisterBtn_OnClick(object sender, EventArgs args)
         {
-            CarSeat carSeat = new CarSeat(SerialNumber, Model, "", "", 72, 0);
+            CarSeat carSeat = new CarSeat(SerialNumber, Make, Model);
             var added = ViewModel.AddCarSeat(carSeat);
             if (added)
             {
-                await (Navigation.PopAsync());
+                await (Navigation.PushAsync(new MainUserView()));
             }
             else
             {
