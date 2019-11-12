@@ -27,14 +27,14 @@ namespace EmergenSEAT.Model
 
             foreach (UserProfile s in profiles)
             {
-                UserProfile profile = new UserProfile(s.email, s.first_name, s.last_name, s.password);
-                foreach (CarSeat seat in s.car_seats)
+                UserProfile profile = new UserProfile(s.Email, s.FirstName, s.LastName, s.Password);
+                foreach (CarSeat seat in s.CarSeats)
                 {
-                    CarSeat car_seat = new CarSeat(seat.serial_number, seat.model, seat.latitude, seat.longitude, seat.weight, seat.temperature);
-                    car_seat.set_gps_location(seat.latitude, seat.longitude);
-                    car_seat.set_temperature(seat.temperature, seat.temperature_unit);
-                    car_seat.set_weight(seat.weight, seat.weight_unit);
-                    profile.add_car_seat(car_seat);
+                    CarSeat car_seat = new CarSeat(seat.SerialNumber, seat.Model, seat.Latitude, seat.Longitude, seat.Weight, seat.Temperature);
+                    car_seat.SetGPSLocation(seat.Latitude, seat.Longitude);
+                    car_seat.SetTemperature(seat.Temperature, seat.TemperatureUnit);
+                    car_seat.SetWeight(seat.Weight, seat.WeightUnit);
+                    profile.AddCarSeat(car_seat);
                 }
                 profiles.Add(profile);
             }

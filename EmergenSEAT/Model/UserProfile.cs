@@ -21,11 +21,11 @@ namespace EmergenSEAT.Model
             car_seats = new List<CarSeat>();
         }
 
-        public void add_car_seat(CarSeat seat)
+        public void AddCarSeat(CarSeat seat)
         {
             car_seats.Add(seat);
         }
-        public void delete_car_seat(CarSeat seat)
+        public void DeleteCarSeat(CarSeat seat)
         {
             //check of car_seats contains a certain serial
             foreach (CarSeat seats in car_seats)
@@ -36,12 +36,12 @@ namespace EmergenSEAT.Model
 
         }
 
-        public void print_user_profile(CarSeat seats)
+        public void PrintUserProfile(CarSeat seats)
         {
             Console.WriteLine("Email: " + email);
             foreach (CarSeat s in car_seats)
             {
-                seats.print_car_seat();
+                seats.PrintCarSeat();
             }
         }
 

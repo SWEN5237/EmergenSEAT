@@ -27,26 +27,26 @@ namespace EmergenSEAT.Model
 
         }
 
-        public void set_gps_location(string latitude, string longitude)
+        public void SetGPSLocation(string latitude, string longitude)
         {
             this.latitude = latitude;
             this.longitude = longitude;
         }
 
-        public void set_weight(double weight, string unit)
+        public void SetWeight(double weight, string unit)
         {
             this.weight = weight;
             weight_unit = unit;
         }
 
-        public void set_temperature(double temp, string unit)
+        public void SetTemperature(double temp, string unit)
         {
             temperature = temp;
             temperature_unit = unit;
         }
 
 
-        public void print_car_seat()
+        public void PrintCarSeat()
         {
             Console.WriteLine(serial_number);
             Console.WriteLine(latitude);
