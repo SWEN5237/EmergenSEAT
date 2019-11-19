@@ -30,13 +30,13 @@ namespace EmergenSEAT.Model
             this.Longitude = longitude;
         }
 
-        public void SetWeight(double weight, string unit)
+        public void SetWeight(double weight, string unit = "Lbs")
         {
             this.Weight = weight;
             this.WeightUnit = unit;
         }
 
-        public void SetTemperature(double temp, string unit)
+        public void SetTemperature(double temp, string unit = "Farenheit")
         {
             this.Temperature = temp;
             this.TemperatureUnit = unit;

@@ -20,6 +20,7 @@ namespace EmergenSEAT
         {
             InitializeComponent();
             this.BindingContext = this;
+
         }
         async void LoginBtn_OnClick(object sender, EventArgs args)
         {

@@ -22,6 +22,9 @@
             <Label Grid.Row="0" Text="{Binding CarSeat.SerialNumber}"/>
             <Label Grid.Row="1" Text="{Binding CarSeat.Make}"/>
             <Label Grid.Row="2" Text="{Binding CarSeat.Model}"/>
+            <Label Grid.Row="3" Text="{Binding Temperature, Mode=TwoWay}"/>
+            <Label Grid.Row="4" Text="{Binding Weight, Mode=TwoWay}"/>
+
         </Grid>
        <Button Text="Register New Device" Clicked="RegisterBtn_OnClick"/>
        <Button Text="Logout" Clicked="LogoutBtn_OnClick"/>
