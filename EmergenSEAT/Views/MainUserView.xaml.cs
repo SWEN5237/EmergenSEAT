@@ -11,10 +11,41 @@ namespace EmergenSEAT.Views
     
     public partial class MainUserView : ContentPage, INotifyPropertyChanged
     {
+        #region Properties
         public EmergenSeatViewModel ViewModel { get; private set; }
         public UserProfile ActiveUser { get; private set; }
-        public CarSeat CarSeat { get; private set; }
-        public string Weight { get; set; }
+        public string WelcomeMessage { get; private set; }
+
+        private bool _AlarmsEnabled;
+        public bool AlarmsEnabled {
+            get { return _AlarmsEnabled; }
+            set {
+                _AlarmsEnabled = value;
+                CarSeat.AlarmsEnabled = value;
+            }
+        }
+
+        private CarSeat _CarSeat;
+        public CarSeat CarSeat
+        {
+            get { return _CarSeat; }
+            set
+            {
+                _CarSeat = value;
+                OnPropertyChanged(nameof(CarSeat));
+            }
+        }
+
+        private string _Weight;
+        public string Weight
+        {
+            get { return _Weight; }
+            set
+            {
+                _Weight = value;
+                OnPropertyChanged(nameof(Weight));
+            }
+        }
 
         private string _Temperature;
         public string Temperature
@@ -27,9 +58,7 @@ namespace EmergenSEAT.Views
             }
         }
 
-        public string WelcomeMessage { get; private set; }
-        public ObservableCollection<CarSeat> CarSeats { get; set; }
-
+        #endregion
 
         public MainUserView()
         {
@@ -47,15 +76,16 @@ namespace EmergenSEAT.Views
                 CarSeat = ActiveUser.CarSeats[0];
                 Weight = $"{ActiveUser.CarSeats[0].Weight} {ActiveUser.CarSeats[0].WeightUnit}";
                 Temperature = $"{ActiveUser.CarSeats[0].Temperature} degrees {ActiveUser.CarSeats[0].TemperatureUnit}";
+                AlarmsEnabled = ActiveUser.CarSeats[0].AlarmsEnabled;
                 TempAndWeightAlert();
             }
 
             ViewModel.PropertyChanged += ViewModel_PropertyChanged;
-
             InitializeComponent();
 
         }
 
+        #region Event Handlers
         private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             TempAndWeightAlert();
@@ -72,19 +102,22 @@ namespace EmergenSEAT.Views
             ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
             await Navigation.PopToRootAsync();
         }
+        #endregion
 
         private async void TempAndWeightAlert()
         { 
             CarSeat = ActiveUser.CarSeats[0];
-
-            Weight = $"{ActiveUser.CarSeats[0].Weight} {ActiveUser.CarSeats[0].WeightUnit}";
-            Temperature = $"{ActiveUser.CarSeats[0].Temperature} degrees {ActiveUser.CarSeats[0].TemperatureUnit}";
-
-
-            if (CarSeat.Weight >= 5 && CarSeat.Temperature >= 78)
+            if (CarSeat.AlarmsEnabled)
             {
-                await DisplayAlert($"WARNING!", "Temperature is " + Temperature + " degrees\n" +
-                                        "PLEASE CHECK BABY!", "Confirm");
+                Weight = $"{ActiveUser.CarSeats[0].Weight} {ActiveUser.CarSeats[0].WeightUnit}";
+                Temperature = $"{ActiveUser.CarSeats[0].Temperature} degrees {ActiveUser.CarSeats[0].TemperatureUnit}";
+
+
+                if (CarSeat.Weight >= 5 && CarSeat.Temperature >= 78)
+                {
+                    await DisplayAlert($"WARNING!", "Temperature is " + Temperature + " degrees\n" +
+                                            "PLEASE CHECK BABY!", "Confirm");
+                }
             }
 
         }

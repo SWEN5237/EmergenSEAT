@@ -15,6 +15,7 @@ namespace EmergenSEAT.Model
         public string WeightUnit { get; private set; } = "Lbs";
         public double Temperature { get; private set; } = 0;
         public string TemperatureUnit { get; private set; } = "Farenheit";
+        public bool AlarmsEnabled { get; set; } = true;
 
         public CarSeat(string serial_number, string make, string model)
         {
