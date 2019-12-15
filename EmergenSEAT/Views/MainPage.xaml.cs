@@ -22,6 +22,7 @@ namespace EmergenSEAT
             this.BindingContext = this;
 
         }
+
         async void LoginBtn_OnClick(object sender, EventArgs args)
         {
             if (ViewModel == null) { ViewModel = (EmergenSeatViewModel)Application.Current.BindingContext; }

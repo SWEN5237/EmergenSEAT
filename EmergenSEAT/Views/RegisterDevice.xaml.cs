@@ -24,7 +24,7 @@ namespace EmergenSEAT.Views
 
         async void RegisterBtn_OnClick(object sender, EventArgs args)
         {
-            CarSeat carSeat = new CarSeat(SerialNumber, Make, Model);
+            CarSeat carSeat = new CarSeat() { SerialNumber = this.SerialNumber, Make = this.Make, Model = this.Model };
             var added = ViewModel.AddCarSeat(carSeat);
             if (added)
             {

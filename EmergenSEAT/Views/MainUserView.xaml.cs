@@ -57,7 +57,6 @@ namespace EmergenSEAT.Views
                 OnPropertyChanged(nameof(Temperature));
             }
         }
-
         #endregion
 
         public MainUserView()
@@ -82,13 +81,19 @@ namespace EmergenSEAT.Views
 
             ViewModel.PropertyChanged += ViewModel_PropertyChanged;
             InitializeComponent();
-
         }
 
         #region Event Handlers
+        //Update View When Model Property Changes
         private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            TempAndWeightAlert();
+            if (e.PropertyName.Equals("Temperature") || e.PropertyName.Equals("Weight"))
+            {
+                Weight = $"{ActiveUser.CarSeats[0].Weight} {ActiveUser.CarSeats[0].WeightUnit}";
+                Temperature = $"{ActiveUser.CarSeats[0].Temperature} degrees {ActiveUser.CarSeats[0].TemperatureUnit}";
+
+                TempAndWeightAlert();
+            }
         }
 
         async void RegisterBtn_OnClick(object sender, EventArgs args)
@@ -104,23 +109,16 @@ namespace EmergenSEAT.Views
         }
         #endregion
 
-        private async void TempAndWeightAlert()
-        { 
-            CarSeat = ActiveUser.CarSeats[0];
-            if (CarSeat.AlarmsEnabled)
+        //Display Alarm if CarSeat is in Alarm
+        private void TempAndWeightAlert()
+        {
+            this.CarSeat = ActiveUser.CarSeats[0];
+
+            if (this.CarSeat.AlarmsEnabled && CarSeat.InAlarm(this.CarSeat))
             {
-                Weight = $"{ActiveUser.CarSeats[0].Weight} {ActiveUser.CarSeats[0].WeightUnit}";
-                Temperature = $"{ActiveUser.CarSeats[0].Temperature} degrees {ActiveUser.CarSeats[0].TemperatureUnit}";
-
-
-                if (CarSeat.Weight >= 5 && CarSeat.Temperature >= 78)
-                {
-                    await DisplayAlert($"WARNING!", "Temperature is " + Temperature + " degrees\n" +
-                                            "PLEASE CHECK BABY!", "Confirm");
-                }
+                DisplayAlert($"WARNING!", "Temperature is " + Temperature + " degrees\n"
+                    + "PLEASE CHECK BABY!", "Confirm");
             }
-
         }
-
     }
 }

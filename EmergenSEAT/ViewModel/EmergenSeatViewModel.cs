@@ -10,17 +10,26 @@ namespace EmergenSEAT.ViewModel
 {
     public class EmergenSeatViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         public UserProfile ActiveUser { get; set; }
         public List<UserProfile> Profiles { get; set; }
 
+        #region Public Methods
+        /// <summary>
+        /// Ctor
+        /// </summary>
         public EmergenSeatViewModel()
         {
             Profiles = new List<UserProfile>();
             //Profiles = DataHandler.ImportFromJson(@"UserProfiles.json");
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
+        /// <summary>
+        /// login with email and password
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public bool Login(string email, string password)
         {
             var userProfile = Profiles.Find((profile) => profile.Email == email);
@@ -35,43 +44,68 @@ namespace EmergenSEAT.ViewModel
             return false;
         }
 
-        public UserProfile Register(string username, string password, string firstName, string lastName)
+        /// <summary>
+        /// Register User Profile
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <returns></returns>
+        public UserProfile Register(string email, string password, string firstName, string lastName)
         {
-            ActiveUser = new UserProfile(username, firstName, lastName, password);
+            ActiveUser = new UserProfile() { Email = email, FirstName = firstName, LastName = lastName, Password = password };
             Profiles.Add(ActiveUser);
             //DataHandler.ExportToJson("", @"UserProfiles.json", Profiles);
             return ActiveUser;
         }
 
+        /// <summary>
+        /// Add CarSeat to active user
+        /// </summary>
+        /// <param name="carSeat"></param>
+        /// <returns></returns>
         public bool AddCarSeat(CarSeat carSeat)
         {
             carSeat.SetWeight(5);
             carSeat.SetTemperature(70);
-            ActiveUser.AddCarSeat(carSeat);
-            
-            Device.StartTimer(TimeSpan.FromSeconds(15), () =>
-            {
-                var temp = new Random().Next(60, 120);
-                carSeat.SetTemperature(temp);
+            bool added = ActiveUser.AddCarSeat(carSeat);
 
-                OnPropertyChanged("Temperature");
-                return true;
-            });
-            return true;
+            if (added)
+            {
+                //Temporary dummy data until we integrate with hardware
+                Device.StartTimer(TimeSpan.FromSeconds(15), () =>
+                {
+                    var temp = new Random().Next(60, 120);
+                    carSeat.SetTemperature(temp);
+                    OnPropertyChanged("Temperature");
+                    return added;
+                });
+            }
+            return added;
         }
 
+        /// <summary>
+        /// Delete CarSeat from Active User
+        /// </summary>
+        /// <param name="serialNumber"></param>
+        /// <returns></returns>
         public bool DeleteCarSeat(string serialNumber)
         {
-            ActiveUser.DeleteCarSeat(serialNumber);
-            return true;
+            return ActiveUser.DeleteCarSeat(serialNumber);
         }
 
+        /// <summary>
+        /// Get Active User Car Seats
+        /// </summary>
+        /// <returns></returns>
         public List<CarSeat> GetCarSeats()
         {
-            //TODO Get Carseats
             return ActiveUser.CarSeats;
         }
+        #endregion
 
+        #region Events
         protected virtual void OnPropertyChanged(string propertyName)
         {
             if (ActiveUser != null)
@@ -81,5 +115,6 @@ namespace EmergenSEAT.ViewModel
                 propertyChangedCallback?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        #endregion
     }
 }

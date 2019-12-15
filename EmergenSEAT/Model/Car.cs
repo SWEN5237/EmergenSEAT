@@ -6,25 +6,9 @@ namespace EmergenSEAT.Model
 {
     public class Car
     {
-        public string make;
-        public string model;
-        public string year;
-        public string vin;
-
-        public Car(string make, string model, string year, string vin)
-        {
-            this.make = make;
-            this.model = model;
-            this.year = year;
-            this.vin = vin;
-        }
-
-        public void UpdateCarDetails(string make, string model, string year, string vin)
-        {
-            this.make = make;
-            this.model = model;
-            this.year = year;
-            this.vin = vin;
-        }
+        public string Make { get; set; }
+        public string Model { get; set; }
+        public string Year { get; set; }
+        public string VIN { get; set; }
     }
 }
